@@ -1,0 +1,25 @@
+<mat-card *ngFor="let user of users" class="card mat-elevation-z10 mb-3">
+
+  <mat-card-header>
+    <mat-card-title>
+      <h4>{{ user.name }}</h4>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <p>{{ user.username }}</p>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>{{ user.email }}</p>
+  </mat-card-content>
+
+  <mat-card-actions class="actions mt-3 mb-3">
+    <button
+      mat-raised-button
+      color="secondary"
+      [routerLink]="['/user-details', user.id]"
+    >
+      VIEW
+    </button>
+  </mat-card-actions>
+</mat-card>
