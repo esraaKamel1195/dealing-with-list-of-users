@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-user-card-list',
   standalone: true,
@@ -14,4 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class UserCardListComponent {
   @Input({ required: true }) users: any;
+
+
 }

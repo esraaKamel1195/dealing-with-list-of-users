@@ -29,19 +29,21 @@ export class UsersListComponent implements OnInit, OnDestroy {
   length: number = 0;
   pageSize: number = 0;
   pageIndex: number = 0;
-  pageSizeOptions: Array<number> = [5, 10, 15, 20];
+  pageSizeOptions: Array<number> = [5, 10];
   showFirstLastButtons = true;
-  loading$?: Observable<boolean> = new Observable<false>();
+  loading: boolean = false;
   private usersSubscription?: Subscription;
+  // @ViewChild('addItem', { static: true }) addItem?: ElementRef;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.usersSubscription = this.usersService.getAllUsers().subscribe({
       next: (users) => {
         this.users = users;
         this.length = this.users.length;
-        // this.pageSizeOptions.push();
+        this.loading = false;
       },
       error: (error) => {
         console.log(error);

@@ -1,1 +1,46 @@
-<p>user-details works!</p>
+<mat-card class="card mat-elevation-z10 mt-3">
+  <mat-card-header>
+    <mat-card-title>
+      <h2><strong>Name: </strong> {{ user.name }}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h4><strong>Username: </strong> {{ user.username }}</h4>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><strong>Email: </strong> {{ user?.email }}</p>
+
+    <div>
+      <h3><strong>Address: </strong></h3>
+
+      <div class="ms-3">
+        <p><strong>street: </strong> {{ user?.address?.street }}</p>
+
+        <p><strong>suite: </strong> {{ user?.address?.suite }}</p>
+
+        <p><strong>city: </strong> {{ user?.address?.city }}</p>
+
+        <p><strong>zipcode: </strong> {{ user?.address?.zipcode }}</p>
+
+        <p>
+          <strong>Geo: </strong> lat: {{ user?.address?.geo?.lat }} / long: {{ user?.address?.geo?.lng }}
+        </p>
+      </div>
+
+      <p><strong>Phone: </strong> {{ user?.phone }}</p>
+
+      <p><strong>Website: </strong> {{ user?.website }}</p>
+
+      <h3><strong>Company: </strong></h3>
+
+      <div class="ms-3">
+        <p><strong>Name: </strong> {{ user?.company?.name }}</p>
+
+        <p><strong>Web Catch Phraseite: </strong> {{ user?.company?.catchPhrase }}</p>
+
+        <p><strong>bs: </strong> {{ user?.company?.bs }}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
