@@ -12,7 +12,7 @@
     <input matInput #searchInput placeholder="Search with name or username" >
   </mat-form-field>
 
-  <app-user-card-list [users]="users" *ngIf="!loading"></app-user-card-list>
+  <app-user-card-list [users]="newUsers" *ngIf="!loading"></app-user-card-list>
 </div>
 
 <mat-paginator

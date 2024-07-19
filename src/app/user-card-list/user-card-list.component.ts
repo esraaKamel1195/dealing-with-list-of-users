@@ -14,5 +14,4 @@ import { MatButtonModule } from '@angular/material/button';
 export class UserCardListComponent {
   @Input({ required: true }) users: any;
 
-
 }
