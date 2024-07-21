@@ -25,7 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class UsersListComponent implements OnInit, OnDestroy {
   users: Array<any> = [];
-  newUsers: Array<any> = [];
+  filteredUsers: Array<any> = [];
+  searchedUser: any[] = [];
   length: number = 0;
   pageSize: number = 5;
   pageIndex: number = 0;
@@ -43,12 +44,20 @@ export class UsersListComponent implements OnInit, OnDestroy {
   }
 
   getusersList(searchText?: string) {
-    console.log('searchText:', searchText);
-
     this.usersSubscription = this.usersService.getAllUsers().subscribe({
       next: (users) => {
         this.users = users;
         this.length = this.users.length;
+        if (searchText) {
+          this.searchedUser = this.users.filter((user) => {
+            if (
+              user.name.toLowerCase().includes(searchText.toLowerCase()) ||
+              user.username.toLowerCase().includes(searchText.toLowerCase())
+            ) {
+              return user;
+            }
+          });
+        }
         this.loading = false;
         this.handleList();
       },
@@ -63,15 +72,22 @@ export class UsersListComponent implements OnInit, OnDestroy {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    
+
     this.handleList();
   }
 
   handleList() {
-    this.newUsers = this.users.slice(
-      this.pageIndex * this.pageSize,
-      this.pageIndex * this.pageSize + this.pageSize
-    );
+    if (this.searchedUser.length > 0) {
+      this.filteredUsers = this.searchedUser.slice(
+        this.pageIndex * this.pageSize,
+        this.pageIndex * this.pageSize + this.pageSize
+      );
+    } else {
+      this.filteredUsers = this.users.slice(
+        this.pageIndex * this.pageSize,
+        this.pageIndex * this.pageSize + this.pageSize
+      );
+    }
   }
 
   ngOnDestroy(): void {
