@@ -8,7 +8,6 @@ import { UsersService } from '../users.service';
 import { UserCardListComponent } from '../user-card-list/user-card-list.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 @Component({
   selector: 'app-users-list',
   standalone: true,
@@ -35,12 +34,17 @@ export class UsersListComponent implements OnInit, OnDestroy {
   showFirstLastButtons = true;
   loading: boolean = false;
   private usersSubscription?: Subscription;
-  // @ViewChild('addItem', { static: true }) addItem?: ElementRef;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.loading = true;
+    this.getusersList();
+  }
+
+  getusersList(searchText?: string) {
+    console.log('searchText:', searchText);
+
     this.usersSubscription = this.usersService.getAllUsers().subscribe({
       next: (users) => {
         this.users = users;
