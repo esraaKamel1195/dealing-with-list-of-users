@@ -2,11 +2,6 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'auth',
-    loadChildren: () =>
-      import('./authentication/authentication.route').then((m) => m.authRoute),
-  },
-  {
     path: '',
     loadComponent: () =>
       import('./users-list/users-list.component').then(
@@ -25,13 +20,6 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./user-details/user-details.component').then(
         (c) => c.UserDetailsComponent
-      ),
-  },
-  {
-    path: '**',
-    loadComponent: () =>
-      import('./not-found-page/not-found-page.component').then(
-        (c) => c.NotFoundPageComponent
       ),
   },
 ];
