@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { UsersService } from '../users.service';
+import { UsersService } from '../users-list/users.service';
 import { Subscription } from 'rxjs';
 
 @Component({
