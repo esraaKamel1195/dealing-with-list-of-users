@@ -8,6 +8,8 @@ export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) {}
 
+  signUp() {}
+
   login() {}
 
   logout() {}
